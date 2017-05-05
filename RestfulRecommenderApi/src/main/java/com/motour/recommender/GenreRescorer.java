@@ -4,16 +4,14 @@ import java.util.ArrayList;
 
 import org.apache.mahout.cf.taste.recommender.IDRescorer;
 
-import com.sun.tools.javac.util.List;
-
 public class GenreRescorer implements IDRescorer {
 	int UserId;
 	ArrayList<String> userAttribute = new ArrayList<String>();
 
 	public GenreRescorer(int id) {
 		this.UserId = id;
-		getUserAttributeInDB Attribute = new getUserAttributeInDB();
-		this.userAttribute = Attribute.returnPreferProperty(id);
+		
+		this.userAttribute = getUserAttributeInDB.returnPreferProperty(id);
 	}
 
 	@Override

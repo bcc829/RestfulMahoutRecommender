@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class getUserAttributeInDB {
 	
-public static ArrayList returnPreferProperty (int User_Id){
+public static ArrayList<String> returnPreferProperty (int User_Id){
 		
 		Connection conn;
 		Statement stmt=null;
-		ArrayList PropertyList = new ArrayList();
+		ArrayList<String> PropertyList = new ArrayList<String>();
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
