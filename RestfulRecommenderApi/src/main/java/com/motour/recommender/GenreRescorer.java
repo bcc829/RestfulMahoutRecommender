@@ -25,7 +25,7 @@ public class GenreRescorer implements IDRescorer {
 		TravelDestination Td = null;
 		try {
 			// �뀒�뒪�듃瑜� �쐞�빐 �듅�젙媛믪쓣 吏묒뼱�꽔�쓬
-			Td = new TravelDestination(294439);
+			Td = new TravelDestination((int)ItemId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
