@@ -113,5 +113,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xpp3_min-1.1.4c.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xstream-1.4.4.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/zookeeper-3.4.6.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mysql-connector-java-5.1.42-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
