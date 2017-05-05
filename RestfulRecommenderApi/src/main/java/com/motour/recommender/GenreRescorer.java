@@ -26,21 +26,20 @@ public class GenreRescorer implements IDRescorer {
 	public double rescore(long ItemId, double originalScore) {
 		TravelDestination Td = null;
 		try {
-			// 테스트를 위해 특정값을 집어넣음
+			// �뀒�뒪�듃瑜� �쐞�빐 �듅�젙媛믪쓣 吏묒뼱�꽔�쓬
 			Td = new TravelDestination(294439);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// 정부 3.0에서 가져온 여행지 아이디의 중 분류
+		// �젙遺� 3.0�뿉�꽌 媛��졇�삩 �뿬�뻾吏� �븘�씠�뵒�쓽 以� 遺꾨쪟
 
 		String str = Td.getAttribute();
 
 		for (int i = 0; i < this.userAttribute.size(); i++) {
 			if (str.equals(this.userAttribute.get(i))) {
-				// 가중치 50프로
-				System.out.println(Td.getAttribute() + "*1.5");
-				return originalScore * 1.5;
+				// 媛�以묒튂 50�봽濡�
+				return originalScore * 1.2;
 			} 
 		}
 		return originalScore;

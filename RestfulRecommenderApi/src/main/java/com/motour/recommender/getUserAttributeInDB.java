@@ -18,7 +18,7 @@ public static ArrayList returnPreferProperty (int User_Id){
 		}
 			
 		try {
-			String jdbcUrl = "jdbcmysqllocalhost3306tourofall";
+			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall";
 			String userId = "root";
 			String userPass = "465651";
 
@@ -34,7 +34,7 @@ public static ArrayList returnPreferProperty (int User_Id){
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			System.out.println("SQLException  + e.getMessage()");
+			System.out.println("SQLException"  + e.getMessage());
 			}
 		return PropertyList;
 		}
