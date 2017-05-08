@@ -41,12 +41,13 @@ public class mahoutRecommneder {
 
 		LoadEvaluator.runLoad(recommender);
 
-		// rescorer�깮�꽦
+		
 		String json = "{" + "\"Items\"" + ":" + "[";
+		//Rescorer 생성
 		IDRescorer testRescorer = new GenreRescorer(id);
 		List<RecommendedItem> recommendations = recommender.recommend(id, 10, testRescorer);
 
-		// String �뙆�떛 - id 媛믩쭔 李얠쓬
+		// String Parsing 아이디값만 찾음
 		Iterator<RecommendedItem> itr = recommendations.iterator();
 		while (itr.hasNext()) {
 			RecommendedItem item = itr.next();

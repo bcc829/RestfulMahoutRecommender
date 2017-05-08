@@ -44,7 +44,7 @@ int index;
 				if(node.getNodeName().equals("cat2")){
 					cat2 = node.getTextContent();
 				}
-				//여행지 이
+				//여행지 이름이 필요할 경우 사용
 //				if(node.getNodeName().equals("title")){
 //					title = node.getTextContent();
 //				

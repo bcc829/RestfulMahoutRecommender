@@ -10,7 +10,7 @@ public class GenreRescorer implements IDRescorer {
 
 	public GenreRescorer(int id) {
 		this.UserId = id;
-		
+
 		this.userAttribute = getUserAttributeInDB.returnPreferProperty(id);
 	}
 
@@ -24,21 +24,20 @@ public class GenreRescorer implements IDRescorer {
 	public double rescore(long ItemId, double originalScore) {
 		TravelDestination Td = null;
 		try {
-			// �뀒�뒪�듃瑜� �쐞�빐 �듅�젙媛믪쓣 吏묒뼱�꽔�쓬
-			Td = new TravelDestination((int)ItemId);
+			// tourApi에서 아이템의 중분류값을 가져옴
+			Td = new TravelDestination((int) ItemId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// �젙遺� 3.0�뿉�꽌 媛��졇�삩 �뿬�뻾吏� �븘�씠�뵒�쓽 以� 遺꾨쪟
 
 		String str = Td.getAttribute();
 
 		for (int i = 0; i < this.userAttribute.size(); i++) {
 			if (str.equals(this.userAttribute.get(i))) {
-				// 媛�以묒튂 50�봽濡�
+				// 가중치 1.2배
 				return originalScore * 1.2;
-			} 
+			}
 		}
 		return originalScore;
 	}
