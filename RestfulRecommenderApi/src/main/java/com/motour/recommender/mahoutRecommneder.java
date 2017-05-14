@@ -7,9 +7,13 @@ import java.util.List;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.eval.LoadEvaluator;
 import org.apache.mahout.cf.taste.impl.model.jdbc.MySQLJDBCDataModel;
+import org.apache.mahout.cf.taste.impl.model.jdbc.ReloadFromJDBCDataModel;
+import org.apache.mahout.cf.taste.impl.neighborhood.CachingUserNeighborhood;
 import org.apache.mahout.cf.taste.impl.neighborhood.ThresholdUserNeighborhood;
 import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
+import org.apache.mahout.cf.taste.impl.similarity.CachingUserSimilarity;
 import org.apache.mahout.cf.taste.impl.similarity.EuclideanDistanceSimilarity;
+import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.model.JDBCDataModel;
 import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
 import org.apache.mahout.cf.taste.recommender.IDRescorer;
@@ -21,21 +25,27 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class mahoutRecommneder {
 	public static String getRecommenderItem(int id) throws IOException, TasteException {
+		//DB연동 
 		MysqlDataSource datasource = new MysqlDataSource();
 		datasource.setServerName("localhost");
 		datasource.setUser("root");
 		datasource.setPassword("465651");
 		datasource.setDatabaseName("tourOfAll");
-		JDBCDataModel model = new MySQLJDBCDataModel(datasource, "evaluation", "User_Id", "Place_Id", "Score", null);
-
+		
+		DataModel model = new ReloadFromJDBCDataModel(new MySQLJDBCDataModel(datasource, "evaluation", "User_Id", "Place_Id", "Score", null));
 		// DataModel model = new FileDataModel(
 		// new
 		// File("C:/Users/Administrator/git/RestfulMahoutRecommender/RestfulRecommenderApi/src/main/resources/ddd.csv"));
-
-		UserSimilarity similarity = new EuclideanDistanceSimilarity(model);
+		
+		//유사도 측정을 캐쉬로 저장
+		UserSimilarity similarity = new CachingUserSimilarity(new EuclideanDistanceSimilarity(model),model);
 
 		// new SpearmanCorrelationSimilarity(model);
-		UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0, similarity, model);
+		
+		//유저 이웃 계산 결과를 캐쉬로 저장
+		UserNeighborhood neighborhood = new CachingUserNeighborhood(new ThresholdUserNeighborhood(0, similarity, model),model);
+		
+		
 		// new NearestNUserNeighborhood(5,similarity,model);
 		Recommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
 
