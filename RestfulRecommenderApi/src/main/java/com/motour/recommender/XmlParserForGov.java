@@ -48,8 +48,7 @@ int index;
 //				if(node.getNodeName().equals("title")){
 //					title = node.getTextContent();
 //				
-//					}
-				
+//					}				
 				}
 			}
 		return cat2;
