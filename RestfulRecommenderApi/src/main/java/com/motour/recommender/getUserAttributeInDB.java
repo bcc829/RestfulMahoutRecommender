@@ -18,7 +18,7 @@ public static ArrayList<String> returnPreferProperty (int User_Id){
 		}
 			
 		try {
-			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall";
+			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall?autoReconnect=ture&useSSL=false";
 			String userId = "root";
 			String userPass = "465651";
 

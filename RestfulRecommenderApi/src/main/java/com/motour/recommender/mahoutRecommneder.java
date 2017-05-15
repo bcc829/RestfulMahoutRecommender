@@ -43,7 +43,7 @@ public class mahoutRecommneder {
 		// new SpearmanCorrelationSimilarity(model);
 		
 		//유저 이웃 계산 결과를 캐쉬로 저장
-		UserNeighborhood neighborhood = new CachingUserNeighborhood(new ThresholdUserNeighborhood(0, similarity, model),model);
+		UserNeighborhood neighborhood = new CachingUserNeighborhood(new ThresholdUserNeighborhood(0.8, similarity, model),model);
 		
 		
 		// new NearestNUserNeighborhood(5,similarity,model);
@@ -53,10 +53,11 @@ public class mahoutRecommneder {
 
 		
 		String json = "{" + "\"Items\"" + ":" + "[";
-		//Rescorer 생성
-		IDRescorer testRescorer = new GenreRescorer(id);
-		List<RecommendedItem> recommendations = recommender.recommend(id, 10, testRescorer);
-
+//Rescorer 생성 현재 트래픽 제한 때문에 여행지의 중분류값을 가져 올 수 없어서 해결 될 때 까지 쓰지 않음 
+//		IDRescorer testRescorer = new GenreRescorer(id);
+//		List<RecommendedItem> recommendations = recommender.recommend(id, 10, testRescorer);
+		
+		List<RecommendedItem> recommendations = recommender.recommend(id, 10);
 		// String Parsing 아이디값만 찾음
 		Iterator<RecommendedItem> itr = recommendations.iterator();
 		while (itr.hasNext()) {
