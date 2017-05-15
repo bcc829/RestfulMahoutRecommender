@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class getUserAttributeInDB {
 	
-public static ArrayList<String> returnPreferProperty (int User_Id){
+public ArrayList<String> returnPreferProperty (int User_Id){
 		
 		Connection conn;
 		Statement stmt=null;

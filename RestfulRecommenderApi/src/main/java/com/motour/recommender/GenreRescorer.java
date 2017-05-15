@@ -11,7 +11,7 @@ public class GenreRescorer implements IDRescorer {
 	public GenreRescorer(int id) {
 		this.UserId = id;
 
-		this.userAttribute = getUserAttributeInDB.returnPreferProperty(id);
+		this.userAttribute = new getUserAttributeInDB().returnPreferProperty(id);
 	}
 
 	@Override
