@@ -56,7 +56,7 @@ public class mahoutRecommneder {
 		String json = "{" + "\"Items\"" + ":" + "[";
 
 		IDRescorer testRescorer = new GenreRescorer(id);
-		List<RecommendedItem> recommendations = recommender.recommend(id, 10, testRescorer);
+		List<RecommendedItem> recommendations = recommender.recommend(id, 20, testRescorer);
 		
 //		List<RecommendedItem> recommendations = recommender.recommend(id, 10);
 		// String Parsing 아이디값만 찾음

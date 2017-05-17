@@ -33,7 +33,11 @@ public class GenreRescorer implements IDRescorer {
 		}
 
 		String str = Td.getAttribute();
-
+		
+		
+		if(userAttribute.size() == 0)
+			return originalScore;
+		
 		for (int i = 0; i < this.userAttribute.size(); i++) {
 			if (str.equals(this.userAttribute.get(i))) {
 				// 가중치 1.2배
