@@ -25,7 +25,8 @@ public class GenreRescorer implements IDRescorer {
 		TravelDestination Td = null;
 		try {
 			// tourApi에서 아이템의 중분류값을 가져옴
-			Td = new TravelDestination((int) ItemId);
+			Td = new TravelDestination();
+			Td.TravelDestination((int)ItemId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
