@@ -32,6 +32,7 @@ public class mahoutRecommneder {
 		datasource.setPassword("465651");
 		datasource.setDatabaseName("tourOfAll");
 		
+		
 		DataModel model = new ReloadFromJDBCDataModel(new MySQLJDBCDataModel(datasource, "evaluation", "User_Id", "Place_Id", "Score", null));
 		// DataModel model = new FileDataModel(
 		// new
@@ -63,11 +64,19 @@ public class mahoutRecommneder {
 		while (itr.hasNext()) {
 			RecommendedItem item = itr.next();
 			String str = item.toString();
+			String ItemId = str.substring(str.indexOf(":") + 1, str.indexOf(","));
+			String value = str.substring(str.indexOf("value:") + 6, str.indexOf("value:") + 9);
+			getPlaceURL url = new getPlaceURL(Integer.parseInt(ItemId));
+			
 			if (itr.hasNext())
-				json = json + "{" + "\"ID\"" + ":" + "\"" + str.substring(str.indexOf(":") + 1, str.indexOf(",")) + "\""
-						+ "}" + ", ";
+				json = json + "{" + "\"ID\"" + ":" + "\"" + ItemId + "\"" 
+			            + ", " + "\"Value\"" + ":" + "\"" + value + "\""
+			            + ", " + "\"URL\"" + ":" + "\"" + url.getURL() + "\""
+			            + "}" + ", ";
 			else
-				json = json + "{" + "\"ID\"" + ":" + "\"" + str.substring(str.indexOf(":") + 1, str.indexOf(",")) + "\""
+				json = json + "{" + "\"ID\"" + ":" + "\"" + ItemId + "\""
+						+ ", " + "\"Value\"" + ":" + "\"" + value + "\""
+						+ ", " + "\"URL\"" + ":" + "\"" + url.getURL() + "\""
 						+ "}";
 		}
 
