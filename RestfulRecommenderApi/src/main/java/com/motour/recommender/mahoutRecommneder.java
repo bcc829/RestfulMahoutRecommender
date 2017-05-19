@@ -44,7 +44,7 @@ public class mahoutRecommneder {
 		// new SpearmanCorrelationSimilarity(model);
 		
 		//유저 이웃 계산 결과를 캐쉬로 저장
-		UserNeighborhood neighborhood = new CachingUserNeighborhood(new ThresholdUserNeighborhood(0.8, similarity, model),model);
+		UserNeighborhood neighborhood = new CachingUserNeighborhood(new ThresholdUserNeighborhood(0.75, similarity, model),model);
 		
 		
 		// new NearestNUserNeighborhood(5,similarity,model);

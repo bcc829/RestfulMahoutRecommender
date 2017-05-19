@@ -39,8 +39,8 @@ public class GenreRescorer implements IDRescorer {
 		
 		for (int i = 0; i < this.userAttribute.size(); i++) {
 			if (str.equals(this.userAttribute.get(i))) {
-				// 가중치 1.2배
-				return originalScore * 1.2;
+				// 가중치 1.1배
+				return originalScore * 1.1;
 			}
 		}
 		return originalScore;
