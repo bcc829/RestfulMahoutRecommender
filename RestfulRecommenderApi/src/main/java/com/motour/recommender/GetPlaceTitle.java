@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetPlaceURL {
-	private String URL;
+public class GetPlaceTitle {
+	private String title;
 	
-	public GetPlaceURL(int id){
+	public GetPlaceTitle(int id){
 		Connection conn;
 		Statement stmt = null;
-		String url = null;
+		String title = null;
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -28,11 +28,11 @@ public class GetPlaceURL {
 			conn = DriverManager.getConnection(jdbcUrl, userId, userPass);
 			stmt = conn.createStatement();
 
-			String sql = "select URL from place where Content_Id = " + id + ";";
+			String sql = "select Title from place where Content_Id = " + id + ";";
 
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				url = rs.getString("URL");
+				title = rs.getString("Title");
 			}
 			rs.close();
 			stmt.close();
@@ -40,13 +40,14 @@ public class GetPlaceURL {
 		} catch (SQLException e) {
 			System.out.println("SQLException" + e.getMessage());
 		}
-		URL = url;
+		this.title = title;
 	}
 
 
 
 
-	public String getURL() {
-		return URL;
+
+	public String getTitle() {
+		return this.title;
 	}
 }

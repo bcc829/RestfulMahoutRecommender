@@ -66,17 +66,20 @@ public class mahoutRecommneder {
 			String str = item.toString();
 			String ItemId = str.substring(str.indexOf(":") + 1, str.indexOf(","));
 			String value = str.substring(str.indexOf("value:") + 6, str.indexOf("value:") + 9);
-			getPlaceURL url = new getPlaceURL(Integer.parseInt(ItemId));
+			GetPlaceURL url = new GetPlaceURL(Integer.parseInt(ItemId));
+			GetPlaceTitle title = new GetPlaceTitle(Integer.parseInt(ItemId));
 			
 			if (itr.hasNext())
 				json = json + "{" + "\"ID\"" + ":" + "\"" + ItemId + "\"" 
 			            + ", " + "\"Value\"" + ":" + "\"" + value + "\""
 			            + ", " + "\"URL\"" + ":" + "\"" + url.getURL() + "\""
+			            + ", " + "\"Title\"" + ":" + "\"" + title.getTitle() + "\""
 			            + "}" + ", ";
 			else
 				json = json + "{" + "\"ID\"" + ":" + "\"" + ItemId + "\""
 						+ ", " + "\"Value\"" + ":" + "\"" + value + "\""
 						+ ", " + "\"URL\"" + ":" + "\"" + url.getURL() + "\""
+						+ ", " + "\"Title\"" + ":" + "\"" + title.getTitle() + "\""
 						+ "}";
 		}
 
