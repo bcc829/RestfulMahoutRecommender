@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetPlaceURL {
+public class getPlaceURL {
 	private String URL;
 	
-	public GetPlaceURL(int id){
+	public getPlaceURL(int id){
 		Connection conn;
 		Statement stmt = null;
 		String url = null;

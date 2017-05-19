@@ -3,7 +3,7 @@ import java.sql.*;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 
-public class GetUserAttributeInDB {
+public class getUserAttributeInDB {
 	
 public ArrayList<String> returnPreferProperty (int User_Id){
 		

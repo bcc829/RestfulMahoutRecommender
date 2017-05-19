@@ -20,8 +20,8 @@ public class HomeController {
 	 * @throws TasteException 
 	 * @throws IOException 
 	 */
-	//추천 목록 json으로 전달
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+	//異붿쿇 紐⑸줉 json�쑝濡� �쟾�떖
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String home(@PathVariable int id) throws IOException, TasteException{
 		
 		String str = mahoutRecommneder.getRecommenderItem(id);

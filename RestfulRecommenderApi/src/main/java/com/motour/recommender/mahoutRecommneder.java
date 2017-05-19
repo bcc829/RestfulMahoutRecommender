@@ -44,7 +44,7 @@ public class mahoutRecommneder {
 		// new SpearmanCorrelationSimilarity(model);
 		
 		//유저 이웃 계산 결과를 캐쉬로 저장
-		UserNeighborhood neighborhood = new CachingUserNeighborhood(new ThresholdUserNeighborhood(0.5, similarity, model),model);
+		UserNeighborhood neighborhood = new CachingUserNeighborhood(new ThresholdUserNeighborhood(0.8, similarity, model),model);
 		
 		
 		// new NearestNUserNeighborhood(5,similarity,model);
@@ -66,9 +66,8 @@ public class mahoutRecommneder {
 			String str = item.toString();
 			String ItemId = str.substring(str.indexOf(":") + 1, str.indexOf(","));
 			String value = str.substring(str.indexOf("value:") + 6, str.indexOf("value:") + 9);
-			GetPlaceURL url = new GetPlaceURL(Integer.parseInt(ItemId));
+			getPlaceURL url = new getPlaceURL(Integer.parseInt(ItemId));
 			GetPlaceTitle title = new GetPlaceTitle(Integer.parseInt(ItemId));
-			
 			if (itr.hasNext())
 				json = json + "{" + "\"ID\"" + ":" + "\"" + ItemId + "\"" 
 			            + ", " + "\"Value\"" + ":" + "\"" + value + "\""
