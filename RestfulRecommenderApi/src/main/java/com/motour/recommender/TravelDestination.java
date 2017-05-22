@@ -13,7 +13,7 @@ public class TravelDestination {
 	public void TravelDestination(int id) throws Exception {
 		Connection conn;
 		Statement stmt = null;
-		String PropertyList = null;
+		String Property = null;
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -22,18 +22,18 @@ public class TravelDestination {
 		}
 
 		try {
-			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall?autoReconnect=true&useSSL=false";
+			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall2?autoReconnect=true&useSSL=false";
 			String userId = "root";
 			String userPass = "465651";
 
 			conn = DriverManager.getConnection(jdbcUrl, userId, userPass);
 			stmt = conn.createStatement();
 
-			String sql = "select properties from place where Content_Id = " + id + ";";
+			String sql = "select property from place where Content_Id = " + id + ";";
 
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				PropertyList = rs.getString("properties");
+				Property = rs.getString("property");
 			}
 			rs.close();
 			stmt.close();
@@ -41,7 +41,7 @@ public class TravelDestination {
 		} catch (SQLException e) {
 			System.out.println("SQLException" + e.getMessage());
 		}
-		Attribute = PropertyList;
+		Attribute = Property;
 	}
 
 	public String getAttribute() {

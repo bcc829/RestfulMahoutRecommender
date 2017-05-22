@@ -18,18 +18,18 @@ public ArrayList<String> returnPreferProperty (int User_Id){
 		}
 			
 		try {
-			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall?autoReconnect=true&useSSL=false";
+			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall2?autoReconnect=true&useSSL=false";
 			String userId = "root";
 			String userPass = "465651";
 
 			conn = DriverManager.getConnection(jdbcUrl, userId, userPass);
 			stmt = conn.createStatement();
 			
-			String sql = "select * from user_prefer_property where User_Id = " + User_Id + ";";
+			String sql = "select * from user_preferences where user_id = " + User_Id + ";";
 			
 			ResultSet rs= stmt.executeQuery(sql);
 			while(rs.next()){
-				PropertyList.add(rs.getString("Property_Id"));
+				PropertyList.add(rs.getString("item_category_code"));
 			}
 			rs.close();
 			stmt.close();

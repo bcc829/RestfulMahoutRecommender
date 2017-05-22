@@ -21,7 +21,7 @@ public class getPlaceURL {
 		}
 
 		try {
-			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall?autoReconnect=true&useSSL=false";
+			String jdbcUrl = "jdbc:mysql://localhost:3306/tourofall2?autoReconnect=true&useSSL=false";
 			String userId = "root";
 			String userPass = "465651";
 

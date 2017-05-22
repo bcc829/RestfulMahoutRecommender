@@ -30,10 +30,10 @@ public class mahoutRecommneder {
 		datasource.setServerName("localhost");
 		datasource.setUser("root");
 		datasource.setPassword("465651");
-		datasource.setDatabaseName("tourOfAll");
+		datasource.setDatabaseName("tourOfAll2");
 		
 		
-		DataModel model = new ReloadFromJDBCDataModel(new MySQLJDBCDataModel(datasource, "evaluation", "User_Id", "Place_Id", "Score", null));
+		DataModel model = new ReloadFromJDBCDataModel(new MySQLJDBCDataModel(datasource, "evaluations", "user_id", "item_id", "score", null));
 		// DataModel model = new FileDataModel(
 		// new
 		// File("C:/Users/Administrator/git/RestfulMahoutRecommender/RestfulRecommenderApi/src/main/resources/ddd.csv"));
